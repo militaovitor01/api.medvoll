@@ -1,1 +1,1 @@
-Java API RESTful developed with the Alura SpringBoot course
+Java RESTful API developed with the Alura SpringBoot course
