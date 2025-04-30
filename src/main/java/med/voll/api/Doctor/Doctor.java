@@ -33,4 +33,18 @@ public class Doctor {
         this.specialty = data.specialty();
         this.adress = new Address(data.address());
     }
+
+    public void updateData(DoctorUpdateList data) {
+        if (data.name() != null){
+            this.name = data.name();
+        }
+
+        if (data.telephone_number() != null){
+            this.telephone_number = data.telephone_number();
+        }
+
+        if (data.address() != null){
+            this.adress.updateAddressData(data.address());
+        }
+    }
 }
