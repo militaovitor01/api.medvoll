@@ -15,6 +15,7 @@ public class Doctor {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private Boolean active = false;
     private String email;
     private String crm;
     private String telephone_number;
@@ -28,6 +29,7 @@ public class Doctor {
     public Doctor(DoctorRegisterData data) {
         this.name = data.name();
         this.email = data.email();
+        this.active = true;
         this.telephone_number = data.telephone_number();
         this.crm = data.crm();
         this.specialty = data.specialty();
@@ -47,4 +49,9 @@ public class Doctor {
             this.adress.updateAddressData(data.address());
         }
     }
+
+    public void delete() {
+        this.active = false;
+    }
+
 }

@@ -24,12 +24,18 @@ public class DoctorController {
 
     @GetMapping
     public Page<DoctorDataList> listDoctors(@PageableDefault(size = 10, sort = {"name"}) Pageable pageable) {
-        return repository.findAll(pageable).map(DoctorDataList::new);
+        return repository.findAllByActiveTrue(pageable).map(DoctorDataList::new);
     }
 
     @PutMapping @Transactional //Necessário para todo método de escrita
     public void update(@RequestBody @Valid DoctorUpdateList data) {
         var doctor = repository.getReferenceById(data.id());
         doctor.updateData(data);
+    }
+
+    @DeleteMapping("/{id}") @Transactional //Necessário para todo método de escrita
+    public void delete(@PathVariable Long id){
+        var doctor = repository.getReferenceById(id);
+        doctor.delete();
     }
 }
